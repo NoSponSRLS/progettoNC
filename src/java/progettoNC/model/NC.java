@@ -257,5 +257,4 @@ public class NC implements Serializable {
         return "NC{" + "id=" + id + ", stato=" + stato + ", descprob=" + descprob + ", azionicontenimento=" + azionicontenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", apertada=" + apertada + ", reparto=" + reparto + ", costo=" + costo + ", cause=" + cause + ", azionic=" + azionic + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", fornitore=" + fornitore + ", cliente=" + cliente + '}';
     }
     
-    
 }
