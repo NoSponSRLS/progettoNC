@@ -2,9 +2,11 @@ package progettoNC.model;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -22,21 +24,19 @@ public class Segnalazione implements Serializable {
     @Column(name = "Data")
     private String data;
     
-    @Column(name = "Dipendente")
-    private String dipendente;
+    @OneToMany(mappedBy="Segnalazione")
+    private Set<Dipendente> dipendente;
 
     public Segnalazione() {
         IDsegnalazione="";
         descrizione="";
         data="";
-        dipendente="";
     }
 
     public Segnalazione(String IDsegnalazione, String descrizione, String data, String dipendente) {
         this.IDsegnalazione = IDsegnalazione;
         this.descrizione = descrizione;
         this.data = data;
-        this.dipendente = dipendente;
     }
 
     public String getIDsegnalazione() {
@@ -61,14 +61,6 @@ public class Segnalazione implements Serializable {
 
     public void setData(String data) {
         this.data = data;
-    }
-
-    public String getDipendente() {
-        return dipendente;
-    }
-
-    public void setDipendente(String dipendente) {
-        this.dipendente = dipendente;
     }
 
     @Override
