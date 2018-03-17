@@ -27,6 +27,8 @@ public class Reparto  implements Serializable {
     
     @OneToMany(fetch=FetchType.EAGER, mappedBy="reparto")
     private Set<Dipendente> dipendenti = new HashSet(0);
+    @OneToMany(mappedBy="reparto")
+    private Set<NC> NC = new HashSet(0);
 
     
     public Reparto() {

@@ -5,6 +5,8 @@ import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 
@@ -30,6 +32,10 @@ public class Elaborazione  implements Serializable {
     
     @Column(name = "NC")
     private String NC;
+    
+    @ManyToOne
+    @JoinColumn(name="NC")
+    private NC nc;
 
     public Elaborazione() {
         ID="";
