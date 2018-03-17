@@ -54,7 +54,6 @@ public class Dipendente implements Serializable {
         cognome="";
         password="";
         ruolo="";
-        reparto="";
     }
 
     public Dipendente(String matricola, String nome, String cognome, String password, String ruolo, String reparto) {
@@ -63,7 +62,6 @@ public class Dipendente implements Serializable {
         this.cognome = cognome;
         this.password = password;
         this.ruolo = ruolo;
-        this.reparto = reparto;
     }
 
     public String getMatricola() {
@@ -106,11 +104,11 @@ public class Dipendente implements Serializable {
         this.ruolo = ruolo;
     }
 
-    public String getReparto() {
+    public Reparto getReparto() {
         return reparto;
     }
 
-    public void setReparto(String reparto) {
+    public void setReparto(Reparto reparto) {
         this.reparto = reparto;
     }
 
