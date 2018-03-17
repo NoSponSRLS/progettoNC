@@ -46,7 +46,7 @@ public class Dipendente implements Serializable {
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="Reparto", nullable=false)
-    private Reparto utente;
+    private Reparto reparto;
     
     public Dipendente() {
         matricola="";
