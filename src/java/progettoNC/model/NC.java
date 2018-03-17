@@ -6,10 +6,15 @@
 package progettoNC.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -38,12 +43,6 @@ public class NC implements Serializable {
     @Column(name="DataChiusura")
     private String dataC;
     
-    @Column(name="ApertaDa")
-    private String apertada;
-    
-    @Column(name="Reparto")
-    private String reparto;
-    
     @Column(name="Costo")
     private String costo;
     
@@ -62,11 +61,24 @@ public class NC implements Serializable {
     @Column(name="InterneClienteFornitore")
     private String icf;
     
-    @Column(name="Fornitore")
-    private String fornitore;
+    @ManyToOne
+    @JoinColumn(name="ApertaDa")
+    private NC apertaDa;
     
-    @Column(name="Cliente")
-    private String cliente;
+    @ManyToOne
+    @JoinColumn(name="Reparto")
+    private NC reparto;
+    
+    @ManyToOne
+    @JoinColumn(name="Fornitore")
+    private NC fornitore;
+    
+    @ManyToOne
+    @JoinColumn(name="Cliente")
+    private NC cliente;
+    
+    @OneToMany(mappedBy="nc")
+    private Set<Elaborazione> elaborazioni = new HashSet(0);
 
     public NC() {
     }
@@ -79,16 +91,12 @@ public class NC implements Serializable {
         this.gravita = gravita;
         this.dataA = dataA;
         this.dataC = dataC;
-        this.apertada = apertada;
-        this.reparto = reparto;
         this.costo = costo;
         this.cause = cause;
         this.azionic = azionic;
         this.prevenzione = prevenzione;
         this.revisione = revisione;
         this.icf = icf;
-        this.fornitore = fornitore;
-        this.cliente = cliente;
     }
 
     public int getId() {
@@ -147,22 +155,6 @@ public class NC implements Serializable {
         this.dataC = dataC;
     }
 
-    public String getApertada() {
-        return apertada;
-    }
-
-    public void setApertada(String apertada) {
-        this.apertada = apertada;
-    }
-
-    public String getReparto() {
-        return reparto;
-    }
-
-    public void setReparto(String reparto) {
-        this.reparto = reparto;
-    }
-
     public String getCosto() {
         return costo;
     }
@@ -211,22 +203,6 @@ public class NC implements Serializable {
         this.icf = icf;
     }
 
-    public String getFornitore() {
-        return fornitore;
-    }
-
-    public void setFornitore(String fornitore) {
-        this.fornitore = fornitore;
-    }
-
-    public String getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(String cliente) {
-        this.cliente = cliente;
-    }
-
     @Override
     public int hashCode() {
         int hash = 3;
@@ -254,7 +230,7 @@ public class NC implements Serializable {
 
     @Override
     public String toString() {
-        return "NC{" + "id=" + id + ", stato=" + stato + ", descprob=" + descprob + ", azionicontenimento=" + azionicontenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", apertada=" + apertada + ", reparto=" + reparto + ", costo=" + costo + ", cause=" + cause + ", azionic=" + azionic + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", fornitore=" + fornitore + ", cliente=" + cliente + '}';
+        return "NC{" + "id=" + id + ", stato=" + stato + ", descprob=" + descprob + ", azionicontenimento=" + azionicontenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", reparto=" + reparto + ", costo=" + costo + ", cause=" + cause + ", azionic=" + azionic + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", fornitore=" + fornitore + ", cliente=" + cliente + '}';
     }
     
 }

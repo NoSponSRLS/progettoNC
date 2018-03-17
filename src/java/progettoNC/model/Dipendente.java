@@ -39,6 +39,9 @@ public class Dipendente implements Serializable {
     @OneToMany(mappedBy="dipendente")
     private Set<Segnalazione> segnalazioni = new HashSet(0);
     
+    @OneToMany(mappedBy="apertaDa")
+    private Set<NC> NC = new HashSet(0);
+    
     public Dipendente() {
         matricola="";
         nome="";

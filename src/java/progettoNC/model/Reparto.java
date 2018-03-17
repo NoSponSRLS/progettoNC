@@ -5,10 +5,13 @@
  */
 package progettoNC.model;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +23,9 @@ public class Reparto  implements Serializable {
     
     @Column(name="Nome")
     private String nome;
+    
+    @OneToMany(mappedBy="reparto")
+    private Set<NC> NC = new HashSet(0);
 
     public Reparto() {
     }

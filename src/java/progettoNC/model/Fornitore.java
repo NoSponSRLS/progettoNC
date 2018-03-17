@@ -1,10 +1,13 @@
 package progettoNC.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -18,6 +21,9 @@ public class Fornitore implements Serializable {
     
     @Column(name = "NomeFornitore")
     private String nomeFornitore;
+    
+   @OneToMany(mappedBy="fornitore")
+    private Set<NC> NC = new HashSet(0);
 
     public Fornitore() {
         PIVA="";
