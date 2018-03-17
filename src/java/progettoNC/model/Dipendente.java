@@ -6,6 +6,7 @@ import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
@@ -42,6 +43,10 @@ public class Dipendente implements Serializable {
     
     @ManyToMany(mappedBy="dipendentis")
      private Set<Pezzo> NCS3 = new HashSet(0);
+    
+    @ManyToOne(fetch=FetchType.EAGER)
+    @JoinColumn(name="Reparto", nullable=false)
+    private Reparto utente;
     
     public Dipendente() {
         matricola="";
