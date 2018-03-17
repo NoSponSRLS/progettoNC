@@ -34,9 +34,7 @@ public class Dipendente implements Serializable {
     
     @Column(name = "Ruolo")
     private String ruolo;
-    
-    @Column(name = "Reparto")
-    private String reparto;
+   
     
     @OneToMany(mappedBy="dipendente")
     private Set<Segnalazione> segnalazioni = new HashSet(0);
