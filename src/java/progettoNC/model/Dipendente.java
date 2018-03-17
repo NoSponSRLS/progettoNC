@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -41,6 +42,8 @@ public class Dipendente implements Serializable {
     
     @OneToMany(mappedBy="apertaDa")
     private Set<NC> NC = new HashSet(0);
+    @ManyToMany(mappedBy="dipendentis")
+     private Set<Pezzo> NCS3 = new HashSet(0);
     
     public Dipendente() {
         matricola="";
