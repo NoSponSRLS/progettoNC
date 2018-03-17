@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package progettoNC.model;
-
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
@@ -13,23 +12,23 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="PEZZI")
-public class Pezzi implements Serializable {
-    @Id
-    @Column(name="IDPezzo")
+@Table(name="REPARTI")
+public class Reparto  implements Serializable {
+     @Id
+    @Column(name="IDReparto")
     private int id;
     
-    @Column(name="Categoria")
-    private String nomecategoria;
-    
-    public Pezzi(int id, String nomecategoria) {
-        this.id = id;
-        this.nomecategoria = nomecategoria;
+    @Column(name="Nome")
+    private String nome;
+
+    public Reparto() {
     }
 
-    public Pezzi() {
+    public Reparto(int id, String nome) {
+        this.id = id;
+        this.nome = nome;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -38,18 +37,18 @@ public class Pezzi implements Serializable {
         this.id = id;
     }
 
-    public String getNomecategoria() {
-        return nomecategoria;
+    public String getNome() {
+        return nome;
     }
 
-    public void setNomecategoria(String nomecategoria) {
-        this.nomecategoria = nomecategoria;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 73 * hash + this.id;
+        hash = 11 * hash + this.id;
         return hash;
     }
 
@@ -64,7 +63,7 @@ public class Pezzi implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Pezzi other = (Pezzi) obj;
+        final Reparto other = (Reparto) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -73,7 +72,8 @@ public class Pezzi implements Serializable {
 
     @Override
     public String toString() {
-        return "Pezzi{" + "id=" + id + ", nomecategoria=" + nomecategoria + '}';
+        return "Reparti{" + "id=" + id + ", nome=" + nome + '}';
     }
-
+    
+    
 }

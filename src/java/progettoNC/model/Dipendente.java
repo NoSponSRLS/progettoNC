@@ -1,10 +1,15 @@
 package progettoNC.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -30,7 +35,10 @@ public class Dipendente implements Serializable {
     
     @Column(name = "Reparto")
     private String reparto;
-
+    
+    @OneToMany(mappedBy="dipendente")
+    private Set<Segnalazione> segnalazioni = new HashSet(0);
+    
     public Dipendente() {
         matricola="";
         nome="";

@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -24,8 +26,9 @@ public class Segnalazione implements Serializable {
     @Column(name = "Data")
     private String data;
     
-    @OneToMany(mappedBy="Segnalazione")
-    private Set<Dipendente> dipendente;
+    @ManyToOne
+    @JoinColumn(name="Dipendente")
+    private Dipendente dipendente;
 
     public Segnalazione() {
         IDsegnalazione="";

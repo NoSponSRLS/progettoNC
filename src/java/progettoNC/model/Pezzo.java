@@ -4,31 +4,38 @@
  * and open the template in the editor.
  */
 package progettoNC.model;
+
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="REPARTI")
-public class Reparti  implements Serializable {
-     @Id
-    @Column(name="IDReparto")
+@Table(name="PEZZI")
+public class Pezzo implements Serializable {
+    @Id
+    @Column(name="IDPezzo")
     private int id;
     
-    @Column(name="Nome")
-    private String nome;
-
-    public Reparti() {
-    }
-
-    public Reparti(int id, String nome) {
+    @Column(name="Categoria")
+    private String nomecategoria;
+    
+    @ManyToOne
+    @JoinColumn(name="Categoria")
+    private Categoria categorie;
+    
+    public Pezzo(int id, String nomecategoria) {
         this.id = id;
-        this.nome = nome;
+        this.nomecategoria = nomecategoria;
     }
 
+    public Pezzo() {
+    }
+    
     public int getId() {
         return id;
     }
@@ -37,18 +44,18 @@ public class Reparti  implements Serializable {
         this.id = id;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomecategoria() {
+        return nomecategoria;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomecategoria(String nomecategoria) {
+        this.nomecategoria = nomecategoria;
     }
 
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 11 * hash + this.id;
+        hash = 73 * hash + this.id;
         return hash;
     }
 
@@ -63,7 +70,7 @@ public class Reparti  implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Reparti other = (Reparti) obj;
+        final Pezzo other = (Pezzo) obj;
         if (this.id != other.id) {
             return false;
         }
@@ -72,8 +79,7 @@ public class Reparti  implements Serializable {
 
     @Override
     public String toString() {
-        return "Reparti{" + "id=" + id + ", nome=" + nome + '}';
+        return "Pezzi{" + "id=" + id + ", nomecategoria=" + nomecategoria + '}';
     }
-    
-    
+
 }

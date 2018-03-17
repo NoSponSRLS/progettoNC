@@ -6,15 +6,18 @@
 package progettoNC.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="CATEGORIE")
-public class Categorie implements Serializable {
+public class Categoria implements Serializable {
     
     @Id
     @Column(name="IDCategoria")
@@ -22,11 +25,14 @@ public class Categorie implements Serializable {
     
     @Column(name="Descrizione")
     private String descrizione;
+    
+    @OneToMany(mappedBy="categorie")
+    private Set<Pezzo> pezzi = new HashSet(0);
 
-    public Categorie() {
+    public Categoria() {
     }
 
-    public Categorie(int id, String descrizione) {
+    public Categoria(int id, String descrizione) {
         this.id = id;
         this.descrizione = descrizione;
     }
@@ -65,7 +71,7 @@ public class Categorie implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Categorie other = (Categorie) obj;
+        final Categoria other = (Categoria) obj;
         if (this.id != other.id) {
             return false;
         }
