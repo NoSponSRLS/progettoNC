@@ -6,10 +6,16 @@
 package progettoNC.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -68,6 +74,18 @@ public class NC implements Serializable {
     @Column(name="Cliente")
     private String cliente;
 
+    @ManyToMany(mappedBy="NCS")
+     private Set<Pezzo> pezzos = new HashSet(0);
+    
+    @ManyToMany(mappedBy="NCS2")
+     private Set<Pezzo> tipos = new HashSet(0);
+    
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="TEAMNC", joinColumns = { 
+        @JoinColumn(name="Dipendente", nullable=false, updatable=false) }, inverseJoinColumns = { 
+        @JoinColumn(name="NC", nullable=false, updatable=false) })
+    private Set<NC> dipendentis = new HashSet(0);
+    
     public NC() {
     }
 

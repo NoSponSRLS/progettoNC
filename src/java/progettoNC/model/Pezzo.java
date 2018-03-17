@@ -6,11 +6,16 @@
 package progettoNC.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -27,6 +32,12 @@ public class Pezzo implements Serializable {
     @ManyToOne
     @JoinColumn(name="Categoria")
     private Categoria categorie;
+    
+    @ManyToMany(fetch=FetchType.EAGER)
+    @JoinTable(name="NC_PEZZI", joinColumns = { 
+        @JoinColumn(name="IDPezzo", nullable=false, updatable=false) }, inverseJoinColumns = { 
+        @JoinColumn(name="IDNC", nullable=false, updatable=false) })
+    private Set<NC> NCS = new HashSet(0);
     
     public Pezzo(int id, String nomecategoria) {
         this.id = id;
