@@ -1,16 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -20,7 +15,8 @@ import javax.persistence.Table;
 public class Categoria implements Serializable {
     
     @Id
-    @Column(name="IDCategoria")
+    @GeneratedValue
+    @Column(name="IDCategoria", length = 5)
     private int id;
     
     @Column(name="Descrizione")
@@ -35,6 +31,14 @@ public class Categoria implements Serializable {
     public Categoria(int id, String descrizione) {
         this.id = id;
         this.descrizione = descrizione;
+    }
+
+    public void setPezzi(Set<Pezzo> pezzi) {
+        this.pezzi = pezzi;
+    }
+
+    public Set<Pezzo> getPezzi() {
+        return pezzi;
     }
 
     public int getId() {
@@ -78,12 +82,9 @@ public class Categoria implements Serializable {
         return true;
     }
 
-
-
     @Override
     public String toString() {
         return "Categorie{" + "id=" + id + ", descrizione=" + descrizione + '}';
     }
     
-    
-}
+}//Categoria

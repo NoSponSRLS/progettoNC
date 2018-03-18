@@ -16,7 +16,7 @@ import javax.persistence.Table;
 public class Cliente implements Serializable {
     
     @Id
-    @Column(name = "PIVA")
+    @Column(name = "PIVA", length = 11)
     private String PIVA;
     
     @Column(name = "NomeCliente")
@@ -26,8 +26,14 @@ public class Cliente implements Serializable {
     private Set<NC> NC = new HashSet(0);
 
     public Cliente() {
-        PIVA="";
-        nomeCliente="";
+    }
+
+    public void setNC(Set<NC> NC) {
+        this.NC = NC;
+    }
+
+    public Set<NC> getNC() {
+        return NC;
     }
 
     public Cliente(String PIVA, String nomeCliente) {
@@ -81,4 +87,4 @@ public class Cliente implements Serializable {
         return "Cliente{" + "PIVA=" + PIVA + ", nomeCliente=" + nomeCliente + '}';
     }
       
-}
+}//Cliente

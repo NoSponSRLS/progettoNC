@@ -10,13 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="FORNITORE")
 public class Fornitore implements Serializable {
     
     @Id
-    @Column(name = "PIVA")
+    @Column(name = "PIVA", length = 11)
     private String PIVA;
     
     @Column(name = "NomeFornitore")
@@ -26,13 +25,19 @@ public class Fornitore implements Serializable {
     private Set<NC> NC = new HashSet(0);
 
     public Fornitore() {
-        PIVA="";
-        nomeFornitore="";
     }
 
     public Fornitore(String PIVA, String nomeFornitore) {
         this.PIVA = PIVA;
         this.nomeFornitore = nomeFornitore;
+    }
+
+    public void setNC(Set<NC> NC) {
+        this.NC = NC;
+    }
+
+    public Set<NC> getNC() {
+        return NC;
     }
 
     public String getPIVA() {
@@ -81,4 +86,4 @@ public class Fornitore implements Serializable {
         return "Fornitore{" + "PIVA=" + PIVA + ", nomeFornitore=" + nomeFornitore + '}';
     }
     
-}
+}//Fornitore

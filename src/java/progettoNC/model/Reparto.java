@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.model;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Objects;
@@ -11,6 +7,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -18,7 +15,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="REPARTI")
 public class Reparto  implements Serializable {
-     @Id
+    
+    @Id
+    @GeneratedValue
     @Column(name="IDReparto")
     private int id;
     
@@ -27,10 +26,10 @@ public class Reparto  implements Serializable {
     
     @OneToMany(fetch=FetchType.EAGER, mappedBy="reparto")
     private Set<Dipendente> dipendenti = new HashSet(0);
+    
     @OneToMany(mappedBy="reparto")
     private Set<NC> NC = new HashSet(0);
 
-    
     public Reparto() {
     }
 
@@ -38,6 +37,23 @@ public class Reparto  implements Serializable {
         this.id = id;
         this.nome = nome;
     }
+
+    public void setDipendenti(Set<Dipendente> dipendenti) {
+        this.dipendenti = dipendenti;
+    }
+
+    public void setNC(Set<NC> NC) {
+        this.NC = NC;
+    }
+
+    public Set<Dipendente> getDipendenti() {
+        return dipendenti;
+    }
+
+    public Set<NC> getNC() {
+        return NC;
+    }
+    
 
     public int getId() {
         return id;
@@ -85,5 +101,4 @@ public class Reparto  implements Serializable {
         return "Reparti{" + "id=" + id + ", nome=" + nome + '}';
     }
     
-    
-}
+}//Reparto

@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class Dipendente implements Serializable {
     
     @Id
-    @Column(name = "Matricola")
+    @Column(name = "Matricola", length = 10)
     private String matricola;
     
     @Column(name = "Nome")
@@ -48,19 +48,15 @@ public class Dipendente implements Serializable {
     private Reparto reparto;
     
     public Dipendente() {
-        matricola="";
-        nome="";
-        cognome="";
-        password="";
-        ruolo="";
     }
 
-    public Dipendente(String matricola, String nome, String cognome, String password, String ruolo, String reparto) {
+    public Dipendente(String matricola, String nome, String cognome, String password, String ruolo, Reparto reparto) {
         this.matricola = matricola;
         this.nome = nome;
         this.cognome = cognome;
         this.password = password;
         this.ruolo = ruolo;
+        this.reparto = reparto;
     }
 
     public String getMatricola() {
@@ -165,4 +161,4 @@ public class Dipendente implements Serializable {
         return "Dipendente{" + "matricola=" + matricola + ", cognome=" + cognome + ", ruolo=" + ruolo + ", reparto=" + reparto + '}';
     }
     
-}
+}//Matricola

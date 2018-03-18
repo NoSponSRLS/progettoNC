@@ -4,19 +4,20 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="ELABORAZIONE")
 public class Elaborazione  implements Serializable {
     
     @Id
+    @GeneratedValue
     @Column(name = "ID")
-    private String ID;
+    private int ID;
     
     @Column(name = "DataFine")
     private String dataFine;
@@ -27,39 +28,31 @@ public class Elaborazione  implements Serializable {
     @Column(name = "Descrizione")
     private String descrizione;
     
-    @Column(name = "Dipendente")
-    private String dipendente;
-    
-    @Column(name = "NC")
-    private String NC;
+    @ManyToOne
+    @JoinColumn(name = "Dipendente")
+    private Dipendente dipendente;
     
     @ManyToOne
     @JoinColumn(name="NC")
     private NC nc;
 
     public Elaborazione() {
-        ID="";
-        dataFine="";
-        dataInizio="";
-        descrizione="";
-        dipendente="";
-        NC="";
     }
 
-    public Elaborazione(String ID, String dataFine, String dataInizio, String descrizione, String dipendente, String NC) {
+    public Elaborazione(int ID, String dataFine, String dataInizio, String descrizione, Dipendente dipendente, NC nc) {
         this.ID = ID;
         this.dataFine = dataFine;
         this.dataInizio = dataInizio;
         this.descrizione = descrizione;
         this.dipendente = dipendente;
-        this.NC = NC;
+        this.nc = nc;
     }
 
-    public String getID() {
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -87,20 +80,20 @@ public class Elaborazione  implements Serializable {
         this.descrizione = descrizione;
     }
 
-    public String getDipendente() {
-        return dipendente;
-    }
-
-    public void setDipendente(String dipendente) {
+    public void setDipendente(Dipendente dipendente) {
         this.dipendente = dipendente;
     }
 
-    public String getNC() {
-        return NC;
+    public void setNc(NC nc) {
+        this.nc = nc;
     }
 
-    public void setNC(String NC) {
-        this.NC = NC;
+    public Dipendente getDipendente() {
+        return dipendente;
+    }
+
+    public NC getNc() {
+        return nc;
     }
 
     @Override
@@ -130,7 +123,7 @@ public class Elaborazione  implements Serializable {
 
     @Override
     public String toString() {
-        return "Elaborazione{" + "ID=" + ID + ", dataFine=" + dataFine + ", dataInizio=" + dataInizio + ", descrizione=" + descrizione + ", dipendente=" + dipendente + ", NC=" + NC + '}';
+        return "Elaborazione{" + "ID=" + ID + ", dataFine=" + dataFine + ", dataInizio=" + dataInizio + ", descrizione=" + descrizione + ", dipendente=" + dipendente + ", NC=" + nc + '}';
     }   
     
-}
+}//Elaborazione

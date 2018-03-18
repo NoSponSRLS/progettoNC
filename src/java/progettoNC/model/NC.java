@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -32,10 +26,10 @@ public class NC implements Serializable {
     private String stato;
     
     @Column(name="DescrizioneProblema")
-    private String descprob;
+    private String descProb;
     
     @Column(name="AzioniContenimento")
-    private String azionicontenimento;
+    private String azioniContenimento;
     
     @Column(name="Gravità")
     private String gravita;
@@ -53,7 +47,7 @@ public class NC implements Serializable {
     private String cause;
     
     @Column(name="AzioniCorrettive")
-    private String azionic;
+    private String azioniC;
     
     @Column(name="Prevenzione")
     private String prevenzione;
@@ -66,19 +60,19 @@ public class NC implements Serializable {
     
     @ManyToOne
     @JoinColumn(name="ApertaDa")
-    private NC apertaDa;
+    private Dipendente apertaDa;
     
     @ManyToOne
     @JoinColumn(name="Reparto")
-    private NC reparto;
+    private Reparto reparto;
     
     @ManyToOne
     @JoinColumn(name="Fornitore")
-    private NC fornitore;
+    private Fornitore fornitore;
     
     @ManyToOne
     @JoinColumn(name="Cliente")
-    private NC cliente;
+    private Cliente cliente;
     
     @OneToMany(mappedBy="nc")
     private Set<Elaborazione> elaborazioni = new HashSet(0);
@@ -98,20 +92,24 @@ public class NC implements Serializable {
     public NC() {
     }
 
-    public NC(int id, String stato, String descprob, String azionicontenimento, String gravita, String dataA, String dataC, String apertada, String reparto, String costo, String cause, String azionic, String prevenzione, String revisione, String icf, String fornitore, String cliente) {
+    public NC(int id, String stato, String descProb, String azioniContenimento, String gravita, String dataA, String dataC, String costo, String cause, String azioniC, String prevenzione, String revisione, String icf, Dipendente apertaDa, Reparto reparto, Fornitore fornitore, Cliente cliente) {
         this.id = id;
         this.stato = stato;
-        this.descprob = descprob;
-        this.azionicontenimento = azionicontenimento;
+        this.descProb = descProb;
+        this.azioniContenimento = azioniContenimento;
         this.gravita = gravita;
         this.dataA = dataA;
         this.dataC = dataC;
         this.costo = costo;
         this.cause = cause;
-        this.azionic = azionic;
+        this.azioniC = azioniC;
         this.prevenzione = prevenzione;
         this.revisione = revisione;
         this.icf = icf;
+        this.apertaDa = apertaDa;
+        this.reparto = reparto;
+        this.fornitore = fornitore;
+        this.cliente = cliente;
     }
 
     public int getId() {
@@ -128,22 +126,6 @@ public class NC implements Serializable {
 
     public void setStato(String stato) {
         this.stato = stato;
-    }
-
-    public String getDescprob() {
-        return descprob;
-    }
-
-    public void setDescprob(String descprob) {
-        this.descprob = descprob;
-    }
-
-    public String getAzionicontenimento() {
-        return azionicontenimento;
-    }
-
-    public void setAzionicontenimento(String azionicontenimento) {
-        this.azionicontenimento = azionicontenimento;
     }
 
     public String getGravita() {
@@ -186,14 +168,6 @@ public class NC implements Serializable {
         this.cause = cause;
     }
 
-    public String getAzionic() {
-        return azionic;
-    }
-
-    public void setAzionic(String azionic) {
-        this.azionic = azionic;
-    }
-
     public String getPrevenzione() {
         return prevenzione;
     }
@@ -216,6 +190,94 @@ public class NC implements Serializable {
 
     public void setIcf(String icf) {
         this.icf = icf;
+    }
+
+    public void setDescProb(String descProb) {
+        this.descProb = descProb;
+    }
+
+    public void setAzioniContenimento(String azioniContenimento) {
+        this.azioniContenimento = azioniContenimento;
+    }
+
+    public void setAzioniC(String azioniC) {
+        this.azioniC = azioniC;
+    }
+
+    public void setApertaDa(Dipendente apertaDa) {
+        this.apertaDa = apertaDa;
+    }
+
+    public void setReparto(Reparto reparto) {
+        this.reparto = reparto;
+    }
+
+    public void setFornitore(Fornitore fornitore) {
+        this.fornitore = fornitore;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public void setElaborazioni(Set<Elaborazione> elaborazioni) {
+        this.elaborazioni = elaborazioni;
+    }
+
+    public void setPezzi(Set<Pezzo> pezzi) {
+        this.pezzi = pezzi;
+    }
+
+    public void setTipi(Set<Pezzo> tipi) {
+        this.tipi = tipi;
+    }
+
+    public void setTeamNC(Set<NC> teamNC) {
+        this.teamNC = teamNC;
+    }
+
+    public String getDescProb() {
+        return descProb;
+    }
+
+    public String getAzioniContenimento() {
+        return azioniContenimento;
+    }
+
+    public String getAzioniC() {
+        return azioniC;
+    }
+
+    public Dipendente getApertaDa() {
+        return apertaDa;
+    }
+
+    public Reparto getReparto() {
+        return reparto;
+    }
+
+    public Fornitore getFornitore() {
+        return fornitore;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public Set<Elaborazione> getElaborazioni() {
+        return elaborazioni;
+    }
+
+    public Set<Pezzo> getPezzi() {
+        return pezzi;
+    }
+
+    public Set<Pezzo> getTipi() {
+        return tipi;
+    }
+
+    public Set<NC> getTeamNC() {
+        return teamNC;
     }
 
     @Override
@@ -245,7 +307,7 @@ public class NC implements Serializable {
 
     @Override
     public String toString() {
-        return "NC{" + "id=" + id + ", stato=" + stato + ", descprob=" + descprob + ", azionicontenimento=" + azionicontenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", reparto=" + reparto + ", costo=" + costo + ", cause=" + cause + ", azionic=" + azionic + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", fornitore=" + fornitore + ", cliente=" + cliente + '}';
+        return "NC{" + "id=" + id + ", stato=" + stato + ", descProb=" + descProb + ", azioniContenimento=" + azioniContenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", costo=" + costo + ", cause=" + cause + ", azioniC=" + azioniC + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", apertaDa=" + apertaDa + ", reparto=" + reparto + ", fornitore=" + fornitore + ", cliente=" + cliente + ", elaborazioni=" + elaborazioni + ", pezzi=" + pezzi + ", tipi=" + tipi + ", teamNC=" + teamNC + '}';
     }
-    
-}
+ 
+}//NC

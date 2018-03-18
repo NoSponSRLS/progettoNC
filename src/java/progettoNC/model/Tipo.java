@@ -13,7 +13,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="TIPO")
 public class Tipo implements Serializable{
@@ -32,13 +31,19 @@ public class Tipo implements Serializable{
     private Set<NC> tipiNC = new HashSet(0);
     
     public Tipo() {
-        nome="";
-        descrizione="";
     }
     
     public Tipo(String nome, String descrizione) {
         this.nome = nome;
         this.descrizione = descrizione;
+    }
+
+    public Set<NC> getTipiNC() {
+        return tipiNC;
+    }
+
+    public void setTipiNC(Set<NC> tipiNC) {
+        this.tipiNC = tipiNC;
     }
 
     public String getNome() {
@@ -87,4 +92,4 @@ public class Tipo implements Serializable{
         return "Tipo{" + "nome=" + nome + ", descrizione=" + descrizione + '}';
     }
  
-}
+}//Tipo

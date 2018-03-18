@@ -2,15 +2,12 @@ package progettoNC.model;
 
 import java.io.Serializable;
 import java.util.Objects;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Entity
 @Table(name="SEGNALAZIONE")
@@ -27,21 +24,27 @@ public class Segnalazione implements Serializable {
     private String data;
     
     @ManyToOne
-    @JoinColumn(name="Dipendente")
+    @JoinColumn(name="Dipendente", nullable = false)
     private Dipendente dipendente;
 
     public Segnalazione() {
-        IDsegnalazione="";
-        descrizione="";
-        data="";
     }
 
-    public Segnalazione(String IDsegnalazione, String descrizione, String data, String dipendente) {
+    public Segnalazione(String IDsegnalazione, String descrizione, String data, Dipendente dipendente) {
         this.IDsegnalazione = IDsegnalazione;
         this.descrizione = descrizione;
         this.data = data;
+        this.dipendente = dipendente;
     }
 
+    public void setDipendente(Dipendente dipendente) {
+        this.dipendente = dipendente;
+    }
+
+    public Dipendente getDipendente() {
+        return dipendente;
+    }
+    
     public String getIDsegnalazione() {
         return IDsegnalazione;
     }
@@ -96,4 +99,4 @@ public class Segnalazione implements Serializable {
         return "Segnalazione{" + "IDsegnalazione=" + IDsegnalazione + ", descrizione=" + descrizione + ", data=" + data + ", dipendente=" + dipendente + '}';
     }  
     
-}
+}//Segnalazione

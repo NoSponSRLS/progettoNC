@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -16,7 +17,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name="PEZZI")
 public class Pezzo implements Serializable {
+    
     @Id
+    @GeneratedValue
     @Column(name="IDPezzo")
     private int id;
     
@@ -24,7 +27,7 @@ public class Pezzo implements Serializable {
     private String nomecategoria;
     
     @ManyToOne
-    @JoinColumn(name="Categoria")
+    @JoinColumn(name="Categoria", nullable = false)
     private Categoria categorie;
     
     @ManyToMany(fetch=FetchType.EAGER)
@@ -32,13 +35,30 @@ public class Pezzo implements Serializable {
         @JoinColumn(name="IDPezzo", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="IDNC", nullable=false, updatable=false) })
     private Set<NC> pezziNC = new HashSet(0);
-    
-    public Pezzo(int id, String nomecategoria) {
+
+    public Pezzo(int id, String nomecategoria, Categoria categorie) {
         this.id = id;
         this.nomecategoria = nomecategoria;
+        this.categorie = categorie;
     }
 
     public Pezzo() {
+    }
+
+    public Categoria getCategorie() {
+        return categorie;
+    }
+
+    public Set<NC> getPezziNC() {
+        return pezziNC;
+    }
+
+    public void setCategorie(Categoria categorie) {
+        this.categorie = categorie;
+    }
+
+    public void setPezziNC(Set<NC> pezziNC) {
+        this.pezziNC = pezziNC;
     }
     
     public int getId() {
@@ -87,4 +107,4 @@ public class Pezzo implements Serializable {
         return "Pezzi{" + "id=" + id + ", nomecategoria=" + nomecategoria + '}';
     }
 
-}
+}//Pezzo
