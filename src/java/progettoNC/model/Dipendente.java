@@ -14,7 +14,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
 @Entity
 @Table(name="DIPENDENTE")
 public class Dipendente implements Serializable {
@@ -34,15 +33,15 @@ public class Dipendente implements Serializable {
     
     @Column(name = "Ruolo")
     private String ruolo;
-   
     
     @OneToMany(mappedBy="dipendente")
     private Set<Segnalazione> segnalazioni = new HashSet(0);
     
     @OneToMany(mappedBy="apertaDa")
-    private Set<NC> NC = new HashSet(0);
-    @ManyToMany(mappedBy="dipendentis")
-     private Set<Pezzo> NCS3 = new HashSet(0);
+    private Set<NC> apertaDa = new HashSet(0);
+    
+    @ManyToMany(mappedBy="teamNC")
+     private Set<NC> teams = new HashSet(0);
     
     @ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="Reparto", nullable=false)
@@ -100,6 +99,30 @@ public class Dipendente implements Serializable {
         return ruolo;
     }
 
+    public void setSegnalazioni(Set<Segnalazione> segnalazioni) {
+        this.segnalazioni = segnalazioni;
+    }
+
+    public void setApertaDa(Set<NC> apertaDa) {
+        this.apertaDa = apertaDa;
+    }
+
+    public void setTeams(Set<NC> teams) {
+        this.teams = teams;
+    }
+
+    public Set<Segnalazione> getSegnalazioni() {
+        return segnalazioni;
+    }
+
+    public Set<NC> getApertaDa() {
+        return apertaDa;
+    }
+
+    public Set<NC> getTeams() {
+        return teams;
+    }
+
     public void setRuolo(String ruolo) {
         this.ruolo = ruolo;
     }
@@ -141,6 +164,5 @@ public class Dipendente implements Serializable {
     public String toString() {
         return "Dipendente{" + "matricola=" + matricola + ", cognome=" + cognome + ", ruolo=" + ruolo + ", reparto=" + reparto + '}';
     }
-    
     
 }

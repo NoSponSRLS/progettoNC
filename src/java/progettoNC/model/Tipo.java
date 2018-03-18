@@ -29,7 +29,7 @@ public class Tipo implements Serializable{
     @JoinTable(name="TIPI_NC", joinColumns = { 
         @JoinColumn(name="Nome", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="IDNC", nullable=false, updatable=false) })
-    private Set<NC> NCS2 = new HashSet(0);
+    private Set<NC> tipiNC = new HashSet(0);
     
     public Tipo() {
         nome="";

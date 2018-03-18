@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,7 +31,7 @@ public class Pezzo implements Serializable {
     @JoinTable(name="NC_PEZZI", joinColumns = { 
         @JoinColumn(name="IDPezzo", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="IDNC", nullable=false, updatable=false) })
-    private Set<NC> NCS = new HashSet(0);
+    private Set<NC> pezziNC = new HashSet(0);
     
     public Pezzo(int id, String nomecategoria) {
         this.id = id;

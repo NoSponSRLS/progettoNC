@@ -83,17 +83,17 @@ public class NC implements Serializable {
     @OneToMany(mappedBy="nc")
     private Set<Elaborazione> elaborazioni = new HashSet(0);
 
-    @ManyToMany(mappedBy="NCS")
-     private Set<Pezzo> pezzos = new HashSet(0);
+    @ManyToMany(mappedBy="pezziNC")
+     private Set<Pezzo> pezzi = new HashSet(0);
     
-    @ManyToMany(mappedBy="NCS2")
-     private Set<Pezzo> tipos = new HashSet(0);
+    @ManyToMany(mappedBy="tipiNC")
+     private Set<Pezzo> tipi = new HashSet(0);
     
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="TEAMNC", joinColumns = { 
         @JoinColumn(name="Dipendente", nullable=false, updatable=false) }, inverseJoinColumns = { 
         @JoinColumn(name="NC", nullable=false, updatable=false) })
-    private Set<NC> dipendentis = new HashSet(0);
+    private Set<NC> teamNC = new HashSet(0);
     
     public NC() {
     }
