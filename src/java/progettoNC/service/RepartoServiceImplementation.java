@@ -2,9 +2,10 @@ package progettoNC.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import progettoNC.dao.RepartoDao;
 import progettoNC.model.Reparto;
 
-public class RepartoServiceImplementation {
+public class RepartoServiceImplementation implements RepartoService{
        
     @Autowired
     private RepartoDao dao;
@@ -16,12 +17,12 @@ public class RepartoServiceImplementation {
 
     @Override
     public void saveReparto(Reparto rep) {
-        dao.saveTipo(rep);
+        dao.saveReparto(rep);
     }
 
     @Override
     public void updateReparto(Reparto rep) {
-        Reparto entity = dao.findTipoById(rep.getId());
+        Reparto entity = dao.findRepartoById(rep.getId());
         if (entity != null) {
             entity.setId(rep.getId());
             entity.setNome(rep.getNome());

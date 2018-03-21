@@ -2,9 +2,10 @@ package progettoNC.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import progettoNC.dao.SegnalazioneDao;
 import progettoNC.model.Segnalazione;
 
-public class SegnalazioneServiceImplementation {
+public class SegnalazioneServiceImplementation implements SegnalazioneService{
    
     @Autowired
     private SegnalazioneDao dao;
@@ -21,7 +22,7 @@ public class SegnalazioneServiceImplementation {
 
     @Override
     public void updateSegnalazione(Segnalazione segn) {
-        Segnalazione entity = dao.findTipoById(segn.getIDsegnalazione());
+        Segnalazione entity = dao.findSegnalazioneById(segn.getIDsegnalazione());
         if (entity != null) {
             entity.setIDsegnalazione(segn.getIDsegnalazione());
             entity.setDescrizione(segn.getDescrizione());
