@@ -10,7 +10,7 @@ import progettoNC.model.Cliente;
 
 @Service("clineteService")
 @Transactional
-public class ClienteServiceImplementation {
+public class ClienteServiceImplementation implements ClienteService {
     @Autowired
     private ClienteDao dao;
 

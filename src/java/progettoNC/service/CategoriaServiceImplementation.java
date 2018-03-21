@@ -15,7 +15,7 @@ import progettoNC.model.Categoria;
 
 @Service("categoriaService")
 @Transactional
-public class CategoriaServiceImplementation {
+public class CategoriaServiceImplementation implements CategoriaService {
     @Autowired
     private CategoriaDao dao;
 

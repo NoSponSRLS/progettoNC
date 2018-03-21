@@ -10,7 +10,7 @@ import progettoNC.model.Elaborazione;
 
 @Service("elaborazioneService")
 @Transactional
-public class ElaborazioneServiceImplementation {
+public class ElaborazioneServiceImplementation implements ElaborazioneService {
      @Autowired
     private ElaborazioneDao dao;
 

@@ -14,7 +14,7 @@ import progettoNC.model.Fornitore;
 
 @Service("fornitoreService")
 @Transactional
-public class FornitoreServiceImplementation {
+public class FornitoreServiceImplementation implements FornitoreService{
      @Autowired
     private FornitoreDao dao;
 
