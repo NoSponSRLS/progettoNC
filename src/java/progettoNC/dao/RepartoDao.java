@@ -6,8 +6,8 @@ import progettoNC.model.Reparto;
 
 
 public interface RepartoDao {
-     Reparto findNCById(int id);
+     Reparto findRepartoById(int id);
     void saveReparto(Reparto reparto);
     void deleteReparto(int id);
-    List<Reparto> findAllReparto();  
+    List<Reparto> findAllReparti();  
 }

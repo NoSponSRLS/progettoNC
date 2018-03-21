@@ -5,8 +5,8 @@ import progettoNC.model.Pezzo;
 
 
 public interface PezzoDao {
-       Pezzo findNCById(int id);
+       Pezzo findPezzoById(int id);
     void savePezzo(Pezzo pezzo);
     void deletePezzo(int id);
-    List<Pezzo> findAllPezzo();  
+    List<Pezzo> findAllPezzi();  
 }
