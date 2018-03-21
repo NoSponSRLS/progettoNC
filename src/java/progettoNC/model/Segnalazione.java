@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,8 +15,9 @@ import javax.persistence.Table;
 public class Segnalazione implements Serializable {
     
     @Id
+    @GeneratedValue
     @Column(name = "IDSegnalazione")
-    private String IDsegnalazione;
+    private int IDsegnalazione;
     
     @Column(name = "Descrizione")
     private String descrizione;
@@ -30,7 +32,7 @@ public class Segnalazione implements Serializable {
     public Segnalazione() {
     }
 
-    public Segnalazione(String IDsegnalazione, String descrizione, String data, Dipendente dipendente) {
+    public Segnalazione(int IDsegnalazione, String descrizione, String data, Dipendente dipendente) {
         this.IDsegnalazione = IDsegnalazione;
         this.descrizione = descrizione;
         this.data = data;
@@ -45,11 +47,11 @@ public class Segnalazione implements Serializable {
         return dipendente;
     }
     
-    public String getIDsegnalazione() {
+    public int getIDsegnalazione() {
         return IDsegnalazione;
     }
 
-    public void setIDsegnalazione(String IDsegnalazione) {
+    public void setIDsegnalazione(int IDsegnalazione) {
         this.IDsegnalazione = IDsegnalazione;
     }
 

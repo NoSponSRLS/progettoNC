@@ -23,12 +23,9 @@ public class Pezzo implements Serializable {
     @Column(name="IDPezzo")
     private int id;
     
-    @Column(name="Categoria")
-    private String nomecategoria;
-    
     @ManyToOne
     @JoinColumn(name="Categoria", nullable = false)
-    private Categoria categorie;
+    private Categoria categoria;
     
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="NC_PEZZI", joinColumns = { 
@@ -36,25 +33,24 @@ public class Pezzo implements Serializable {
         @JoinColumn(name="IDNC", nullable=false, updatable=false) })
     private Set<NC> pezziNC = new HashSet(0);
 
-    public Pezzo(int id, String nomecategoria, Categoria categorie) {
+    public Pezzo(int id, Categoria categoria) {
         this.id = id;
-        this.nomecategoria = nomecategoria;
-        this.categorie = categorie;
+        this.categoria = categoria;
     }
 
     public Pezzo() {
     }
 
-    public Categoria getCategorie() {
-        return categorie;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
     public Set<NC> getPezziNC() {
         return pezziNC;
     }
 
-    public void setCategorie(Categoria categorie) {
-        this.categorie = categorie;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public void setPezziNC(Set<NC> pezziNC) {
@@ -67,14 +63,6 @@ public class Pezzo implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getNomecategoria() {
-        return nomecategoria;
-    }
-
-    public void setNomecategoria(String nomecategoria) {
-        this.nomecategoria = nomecategoria;
     }
 
     @Override
@@ -104,7 +92,7 @@ public class Pezzo implements Serializable {
 
     @Override
     public String toString() {
-        return "Pezzi{" + "id=" + id + ", nomecategoria=" + nomecategoria + '}';
+        return "Pezzo{" + "id=" + id + ", categoria=" + categoria + ", pezziNC=" + pezziNC + '}';
     }
-
+    
 }//Pezzo
