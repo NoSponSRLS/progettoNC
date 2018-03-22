@@ -2,9 +2,13 @@ package progettoNC.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import progettoNC.dao.SegnalazioneDao;
 import progettoNC.model.Segnalazione;
 
+@Service("segnalazioneService")
+@Transactional
 public class SegnalazioneServiceImplementation implements SegnalazioneService{
    
     @Autowired
@@ -17,7 +21,7 @@ public class SegnalazioneServiceImplementation implements SegnalazioneService{
 
     @Override
     public void saveSegnalazione(Segnalazione segn) {
-        dao.saveTipo(segn);
+        dao.saveSegnalazione(segn);
     }
 
     @Override
@@ -40,4 +44,5 @@ public class SegnalazioneServiceImplementation implements SegnalazioneService{
     public List<Segnalazione> findAllSegnalazioni() {
         return dao.findAllSegnalazioni();
     } 
+
 }

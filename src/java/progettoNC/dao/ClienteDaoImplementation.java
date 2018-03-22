@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.dao;
 
 import java.util.List;
@@ -10,15 +5,13 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import progettoNC.model.Cliente;
-import progettoNC.model.Dipendente;
 
-/**
- *
- * @author FSEVERI\santon3575
- */
+@Repository("clienteDao")
 public class ClienteDaoImplementation implements ClienteDao{
-     @Autowired
+    
+    @Autowired
     private SessionFactory sessionFactory;
 
     protected Session getSession() {
@@ -49,4 +42,5 @@ public class ClienteDaoImplementation implements ClienteDao{
         Criteria criteria = getSession().createCriteria(Cliente.class);
         return (List<Cliente>) criteria.list();
     }
+    
 }

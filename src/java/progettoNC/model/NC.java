@@ -22,9 +22,6 @@ public class NC implements Serializable {
     @Column(name="IDNC")
     private int id;
     
-    @Column(name="Stato")
-    private String stato;
-    
     @Column(name="DescrizioneProblema")
     private String descProb;
     
@@ -81,7 +78,7 @@ public class NC implements Serializable {
      private Set<Pezzo> pezzi = new HashSet(0);
     
     @ManyToMany(mappedBy="tipiNC")
-     private Set<Pezzo> tipi = new HashSet(0);
+     private Set<Tipo> tipi = new HashSet(0);
     
     @ManyToMany(fetch=FetchType.EAGER)
     @JoinTable(name="TEAMNC", joinColumns = { 
@@ -92,9 +89,8 @@ public class NC implements Serializable {
     public NC() {
     }
 
-    public NC(int id, String stato, String descProb, String azioniContenimento, String gravita, String dataA, String dataC, String costo, String cause, String azioniC, String prevenzione, String revisione, String icf, Dipendente apertaDa, Reparto reparto, Fornitore fornitore, Cliente cliente) {
+    public NC(int id, String descProb, String azioniContenimento, String gravita, String dataA, String dataC, String costo, String cause, String azioniC, String prevenzione, String revisione, String icf, Dipendente apertaDa, Reparto reparto, Fornitore fornitore, Cliente cliente) {
         this.id = id;
-        this.stato = stato;
         this.descProb = descProb;
         this.azioniContenimento = azioniContenimento;
         this.gravita = gravita;
@@ -118,14 +114,6 @@ public class NC implements Serializable {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getStato() {
-        return stato;
-    }
-
-    public void setStato(String stato) {
-        this.stato = stato;
     }
 
     public String getGravita() {
@@ -228,7 +216,7 @@ public class NC implements Serializable {
         this.pezzi = pezzi;
     }
 
-    public void setTipi(Set<Pezzo> tipi) {
+    public void setTipi(Set<Tipo> tipi) {
         this.tipi = tipi;
     }
 
@@ -272,7 +260,7 @@ public class NC implements Serializable {
         return pezzi;
     }
 
-    public Set<Pezzo> getTipi() {
+    public Set<Tipo> getTipi() {
         return tipi;
     }
 
@@ -307,7 +295,7 @@ public class NC implements Serializable {
 
     @Override
     public String toString() {
-        return "NC{" + "id=" + id + ", stato=" + stato + ", descProb=" + descProb + ", azioniContenimento=" + azioniContenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", costo=" + costo + ", cause=" + cause + ", azioniC=" + azioniC + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", apertaDa=" + apertaDa + ", reparto=" + reparto + ", fornitore=" + fornitore + ", cliente=" + cliente + ", elaborazioni=" + elaborazioni + ", pezzi=" + pezzi + ", tipi=" + tipi + ", teamNC=" + teamNC + '}';
+        return "NC{" + "id=" + id + ", descProb=" + descProb + ", azioniContenimento=" + azioniContenimento + ", gravita=" + gravita + ", dataA=" + dataA + ", dataC=" + dataC + ", costo=" + costo + ", cause=" + cause + ", azioniC=" + azioniC + ", prevenzione=" + prevenzione + ", revisione=" + revisione + ", icf=" + icf + ", apertaDa=" + apertaDa + ", reparto=" + reparto + ", fornitore=" + fornitore + ", cliente=" + cliente + ", elaborazioni=" + elaborazioni + ", pezzi=" + pezzi + ", tipi=" + tipi + ", teamNC=" + teamNC + '}';
     }
  
 }//NC

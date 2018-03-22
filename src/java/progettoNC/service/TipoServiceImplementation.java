@@ -4,18 +4,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import progettoNC.dao.TipoDao;
 import progettoNC.model.Tipo;
 
 @Service("tipoService")
 @Transactional
-public class TipoServiceImplementation {
+public class TipoServiceImplementation implements TipoService {
     
     @Autowired
     private TipoDao dao;
 
     @Override
     public Tipo findTipoById(String nome) {
-        return dao.findDipendenteById(nome);
+        return dao.findTipoById(nome);
     }
 
     @Override
@@ -42,4 +43,5 @@ public class TipoServiceImplementation {
     public List<Tipo> findAllTipi() {
         return dao.findAllTipi();
     }
+    
 }

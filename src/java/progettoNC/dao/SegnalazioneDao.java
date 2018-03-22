@@ -4,8 +4,8 @@ import java.util.List;
 import progettoNC.model.Segnalazione;
 
 public interface SegnalazioneDao {
-       Segnalazione findSegnalazioneById(String IDsegnalazione);
+    Segnalazione findSegnalazioneById(int id);
     void saveSegnalazione(Segnalazione segnalazione);
-    void deleteSegnalazione(String IDsegnalazione);
+    void deleteSegnalazione(int id);
     List<Segnalazione> findAllSegnalazioni();  
 }

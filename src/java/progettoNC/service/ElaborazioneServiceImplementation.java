@@ -11,7 +11,8 @@ import progettoNC.model.Elaborazione;
 @Service("elaborazioneService")
 @Transactional
 public class ElaborazioneServiceImplementation implements ElaborazioneService {
-     @Autowired
+    
+    @Autowired
     private ElaborazioneDao dao;
 
     @Override

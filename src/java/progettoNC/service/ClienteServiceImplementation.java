@@ -1,4 +1,3 @@
-
 package progettoNC.service;
 
 import java.util.List;
@@ -8,9 +7,10 @@ import org.springframework.transaction.annotation.Transactional;
 import progettoNC.dao.ClienteDao;
 import progettoNC.model.Cliente;
 
-@Service("clineteService")
+@Service("clienteService")
 @Transactional
 public class ClienteServiceImplementation implements ClienteService {
+    
     @Autowired
     private ClienteDao dao;
 
@@ -43,4 +43,5 @@ public class ClienteServiceImplementation implements ClienteService {
     public List<Cliente> findAllClienti() {
         return dao.findAllClienti();
     }
+    
 }

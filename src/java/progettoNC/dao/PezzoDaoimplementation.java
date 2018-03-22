@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.dao;
 
 import java.util.List;
@@ -10,14 +5,12 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import progettoNC.model.Dipendente;
+import org.springframework.stereotype.Repository;
 import progettoNC.model.Pezzo;
 
-/**
- *
- * @author FSEVERI\santon3575
- */
+@Repository("pezzoDao")
 public class PezzoDaoimplementation implements PezzoDao{
+    
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -49,4 +42,5 @@ public class PezzoDaoimplementation implements PezzoDao{
         Criteria criteria = getSession().createCriteria(Pezzo.class);
         return (List<Pezzo>) criteria.list();
     }
+    
 }

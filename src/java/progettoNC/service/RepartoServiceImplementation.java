@@ -2,9 +2,13 @@ package progettoNC.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import progettoNC.dao.RepartoDao;
 import progettoNC.model.Reparto;
 
+@Service("repartoService")
+@Transactional
 public class RepartoServiceImplementation implements RepartoService{
        
     @Autowired
@@ -40,4 +44,5 @@ public class RepartoServiceImplementation implements RepartoService{
     public List<Reparto> findAllReparti() {
         return dao.findAllReparti();
     } 
+    
 }

@@ -3,11 +3,10 @@ package progettoNC.service;
 import java.util.List;
 import progettoNC.model.Tipo;
 
-
 public interface TipoService {
-    Tipo findTipoById(int id);
+    Tipo findTipoById(String nome);
     void saveTipo(Tipo tipo);
     void updateTipo(Tipo tipo);
-    void deleteTipo(int id);
+    void deleteTipo(String nome);
     List<Tipo> findAllTipi(); 
 }

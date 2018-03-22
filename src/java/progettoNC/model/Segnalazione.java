@@ -17,7 +17,7 @@ public class Segnalazione implements Serializable {
     @Id
     @GeneratedValue
     @Column(name = "IDSegnalazione")
-    private int IDsegnalazione;
+    private int id;
     
     @Column(name = "Descrizione")
     private String descrizione;
@@ -32,8 +32,8 @@ public class Segnalazione implements Serializable {
     public Segnalazione() {
     }
 
-    public Segnalazione(int IDsegnalazione, String descrizione, String data, Dipendente dipendente) {
-        this.IDsegnalazione = IDsegnalazione;
+    public Segnalazione(int id, String descrizione, String data, Dipendente dipendente) {
+        this.id = id;
         this.descrizione = descrizione;
         this.data = data;
         this.dipendente = dipendente;
@@ -48,11 +48,11 @@ public class Segnalazione implements Serializable {
     }
     
     public int getIDsegnalazione() {
-        return IDsegnalazione;
+        return id;
     }
 
-    public void setIDsegnalazione(int IDsegnalazione) {
-        this.IDsegnalazione = IDsegnalazione;
+    public void setIDsegnalazione(int id) {
+        this.id = id;
     }
 
     public String getDescrizione() {
@@ -74,7 +74,7 @@ public class Segnalazione implements Serializable {
     @Override
     public int hashCode() {
         int hash = 5;
-        hash = 11 * hash + Objects.hashCode(this.IDsegnalazione);
+        hash = 11 * hash + Objects.hashCode(this.id);
         return hash;
     }
 
@@ -90,7 +90,7 @@ public class Segnalazione implements Serializable {
             return false;
         }
         final Segnalazione other = (Segnalazione) obj;
-        if (!Objects.equals(this.IDsegnalazione, other.IDsegnalazione)) {
+        if (!Objects.equals(this.id, other.id)) {
             return false;
         }
         return true;
@@ -98,7 +98,7 @@ public class Segnalazione implements Serializable {
 
     @Override
     public String toString() {
-        return "Segnalazione{" + "IDsegnalazione=" + IDsegnalazione + ", descrizione=" + descrizione + ", data=" + data + ", dipendente=" + dipendente + '}';
+        return "Segnalazione{" + "IDsegnalazione=" + id + ", descrizione=" + descrizione + ", data=" + data + ", dipendente=" + dipendente + '}';
     }  
     
 }//Segnalazione

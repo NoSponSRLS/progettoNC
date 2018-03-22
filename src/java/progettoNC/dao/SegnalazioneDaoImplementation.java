@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.dao;
 
 import java.util.List;
@@ -10,15 +5,14 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import progettoNC.model.Dipendente;
 import progettoNC.model.Segnalazione;
 
-/**
- *
- * @author FSEVERI\santon3575
- */
+@Repository("segnalazioneDao")
 public class SegnalazioneDaoImplementation implements SegnalazioneDao{
- @Autowired
+ 
+    @Autowired
     private SessionFactory sessionFactory;
 
     protected Session getSession() {
@@ -26,8 +20,8 @@ public class SegnalazioneDaoImplementation implements SegnalazioneDao{
     }
 
     @Override
-    public Segnalazione findSegnalazioneById(String IDsegnalazione) {
-            return (Segnalazione) getSession().get(Segnalazione.class, IDsegnalazione);
+    public Segnalazione findSegnalazioneById(int id) {
+            return (Segnalazione) getSession().get(Segnalazione.class, id);
     }
 
     @Override
@@ -36,8 +30,8 @@ public class SegnalazioneDaoImplementation implements SegnalazioneDao{
     }
 
     @Override
-    public void deleteSegnalazione(String IDsegnalazione) {
-        Segnalazione e = (Segnalazione) getSession().load(Dipendente.class, IDsegnalazione);
+    public void deleteSegnalazione(int id) {
+        Segnalazione e = (Segnalazione) getSession().load(Dipendente.class, id);
         if (e != null) {
             getSession().delete(e);
         }
@@ -49,4 +43,5 @@ public class SegnalazioneDaoImplementation implements SegnalazioneDao{
         Criteria criteria = getSession().createCriteria(Dipendente.class);
         return (List<Segnalazione>) criteria.list();
     }   
+
 }

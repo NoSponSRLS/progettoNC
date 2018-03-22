@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package progettoNC.dao;
 
 import java.util.List;
@@ -10,14 +5,13 @@ import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import progettoNC.model.Dipendente;
 import progettoNC.model.Reparto;
 
-/**
- *
- * @author FSEVERI\santon3575
- */
+@Repository("repartoDao")
 public class RepatoDaoImplementation implements RepartoDao{
+    
     @Autowired
     private SessionFactory sessionFactory;
 
@@ -49,4 +43,5 @@ public class RepatoDaoImplementation implements RepartoDao{
         Criteria criteria = getSession().createCriteria(Reparto.class);
         return (List<Reparto>) criteria.list();
     }
+
 }
