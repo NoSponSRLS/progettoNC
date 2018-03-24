@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -28,8 +30,9 @@ public class NC implements Serializable {
     @Column(name="AzioniContenimento")
     private String azioniContenimento;
     
+    @Enumerated(EnumType.STRING)
     @Column(name="Gravità")
-    private String gravita;
+    private Gravita gravita;
     
     @Column(name="DataApertura")
     private String dataA;
@@ -52,8 +55,9 @@ public class NC implements Serializable {
     @Column(name="RevisioneFinale")
     private String revisione;
     
+    @Enumerated(EnumType.STRING)
     @Column(name="InterneClienteFornitore")
-    private String icf;
+    private InternaClienteFornitore icf;
     
     @ManyToOne
     @JoinColumn(name="ApertaDa")
@@ -89,7 +93,7 @@ public class NC implements Serializable {
     public NC() {
     }
 
-    public NC(int id, String descProb, String azioniContenimento, String gravita, String dataA, String dataC, String costo, String cause, String azioniC, String prevenzione, String revisione, String icf, Dipendente apertaDa, Reparto reparto, Fornitore fornitore, Cliente cliente) {
+    public NC(int id, String descProb, String azioniContenimento, Gravita gravita, String dataA, String dataC, String costo, String cause, String azioniC, String prevenzione, String revisione, InternaClienteFornitore icf, Dipendente apertaDa, Reparto reparto, Fornitore fornitore, Cliente cliente) {
         this.id = id;
         this.descProb = descProb;
         this.azioniContenimento = azioniContenimento;
@@ -116,11 +120,11 @@ public class NC implements Serializable {
         this.id = id;
     }
 
-    public String getGravita() {
+    public Gravita getGravita() {
         return gravita;
     }
 
-    public void setGravita(String gravita) {
+    public void setGravita(Gravita gravita) {
         this.gravita = gravita;
     }
 
@@ -172,11 +176,11 @@ public class NC implements Serializable {
         this.revisione = revisione;
     }
 
-    public String getIcf() {
+    public InternaClienteFornitore getIcf() {
         return icf;
     }
 
-    public void setIcf(String icf) {
+    public void setIcf(InternaClienteFornitore icf) {
         this.icf = icf;
     }
 

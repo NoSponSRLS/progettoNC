@@ -6,6 +6,8 @@ import java.util.Objects;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -13,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import static org.hibernate.type.EnumType.ENUM;
 
 @Entity
 @Table(name="DIPENDENTE")
@@ -31,8 +34,9 @@ public class Dipendente implements Serializable {
     @Column(name = "Password")
     private String password;
     
+    @Enumerated(EnumType.STRING)
     @Column(name = "Ruolo")
-    private String ruolo;
+    private Ruolo ruolo;
     
     @OneToMany(mappedBy="dipendente")
     private Set<Segnalazione> segnalazioni = new HashSet(0);
@@ -50,7 +54,7 @@ public class Dipendente implements Serializable {
     public Dipendente() {
     }
 
-    public Dipendente(String matricola, String nome, String cognome, String password, String ruolo, Reparto reparto) {
+    public Dipendente(String matricola, String nome, String cognome, String password, Ruolo ruolo, Reparto reparto) {
         this.matricola = matricola;
         this.nome = nome;
         this.cognome = cognome;
@@ -91,7 +95,7 @@ public class Dipendente implements Serializable {
         this.password = password;
     }
 
-    public String getRuolo() {
+    public Ruolo getRuolo() {
         return ruolo;
     }
 
@@ -119,7 +123,7 @@ public class Dipendente implements Serializable {
         return teams;
     }
 
-    public void setRuolo(String ruolo) {
+    public void setRuolo(Ruolo ruolo) {
         this.ruolo = ruolo;
     }
 

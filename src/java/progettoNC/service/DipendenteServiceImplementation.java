@@ -61,7 +61,7 @@ public class DipendenteServiceImplementation implements DipendenteService, UserD
     @Override
     public UserDetails loadUserByUsername(final String matr) throws UsernameNotFoundException {
         Dipendente dip = dao.findDipendenteById(matr);
-        List<GrantedAuthority> authorities = buildUserAuthority(dip.getRuolo());
+        List<GrantedAuthority> authorities = buildUserAuthority(dip.getRuolo().toString());
         return buildUserForAuthentication(dip, authorities);
     }
 
