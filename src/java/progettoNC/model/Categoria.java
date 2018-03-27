@@ -22,7 +22,7 @@ public class Categoria implements Serializable {
     @Column(name="Descrizione")
     private String descrizione;
     
-    @OneToMany(mappedBy="categorie")
+    @OneToMany(mappedBy="categoria")
     private Set<Pezzo> pezzi = new HashSet(0);
 
     public Categoria() {
