@@ -1,5 +1,8 @@
 package progettoNC.config;
 
-import org.springframework.security.web.context.AbstractSecurityWebApplicationInitializer;
+import org.springframework.core.annotation.Order;
 
-public class WebSecurityInitializer extends AbstractSecurityWebApplicationInitializer {}
+@Order(1)
+public class WebSecurityInitializer {
+
+}
